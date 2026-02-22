@@ -18,6 +18,11 @@ const menuItems = [
         icon: Building2,
     },
     {
+        title: 'จองห้อง',
+        href: '/dashboard/bookings',
+        icon: CalendarCheck,
+    },
+    {
         title: 'จัดการพนักงาน',
         href: '/dashboard/employees',
         icon: Users,
@@ -36,11 +41,6 @@ const menuItems = [
         title: 'ระบบบัญชี',
         href: '/dashboard/accounting',
         icon: DollarSign,
-    },
-    {
-        title: 'จองห้อง',
-        href: '/dashboard/bookings',
-        icon: CalendarCheck,
     },
     {
         title: 'เช็คอิน',

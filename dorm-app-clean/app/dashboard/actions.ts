@@ -181,3 +181,124 @@ export async function addRepair(formData: FormData) {
     revalidatePath('/dashboard')
 }
 export async function deleteRepair(formData: FormData) { await deleteRecord('repairs', Number(formData.get('id'))) }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ==========================================
+// 1. ROOMs (Update)
+// ==========================================
+
+export async function updateRoom(formData: FormData) {
+    const supabase = await createClient()
+    const roomId = Number(formData.get('id'))
+    
+    await supabase.from('rooms').update({
+        room_number: formData.get('room_number'),
+        note: formData.get('note'),
+        status: formData.get('status'),
+        floor_id: Number(formData.get('floor_id')),
+        zone_id: Number(formData.get('zone_id')),
+        type_room_id: Number(formData.get('type_room_id')),
+        dorm_branch_id: Number(formData.get('dorm_branch_id'))
+    }).eq('id', roomId)
+    
+    revalidatePath('/manage-rooms')
+}
+
+
+
+// ==========================================
+// 2. BOOKINGS
+// ==========================================
+
+export async function bookRoom(formData: FormData) {
+    const supabase = await createClient()
+
+    const tenantMode = formData.get('tenant_mode') // 'existing' หรือ 'new'
+    let finalTenantId = formData.get('existing_tenant_id')
+
+    // 1. จัดการข้อมูลผู้เช่า (Tenant)
+    if (tenantMode === 'new') {
+        const { data: newTenant, error: tenantError } = await supabase.from('tenants').insert({
+            name: formData.get('new_tenant_name'),
+            phone: formData.get('new_tenant_phone'),
+            move_in_date: formData.get('new_tenant_move_in'),
+            status: 'active'
+        }).select('id').single()
+
+        if (tenantError) throw new Error('Failed to create tenant: ' + tenantError.message)
+        finalTenantId = newTenant.id
+    }
+
+    // 2. สร้างการจอง (Room Tenants)
+    const roomId = Number(formData.get('room_id'))
+    const { error: bookingError } = await supabase.from('room_tenants').insert({
+        room_id: roomId,
+        tenant_id: Number(finalTenantId)
+    })
+    
+    if (bookingError) throw new Error('Failed to book room: ' + bookingError.message)
+
+    // 3. อัปเดตสถานะห้องให้เป็น "ไม่ว่าง"
+    const { error: roomError } = await supabase.from('rooms').update({
+        status: 'ไม่ว่าง'
+    }).eq('id', roomId)
+
+    if (roomError) throw new Error('Failed to update room status: ' + roomError.message)
+
+    revalidatePath('/booking')
+}
+
+export async function cancelBooking(formData: FormData) {
+    const supabase = await createClient()
+    const roomTenantId = Number(formData.get('room_tenant_id'))
+    const roomId = Number(formData.get('room_id'))
+
+    // ลบประวัติการจองออก
+    await supabase.from('room_tenants').delete().eq('id', roomTenantId)
+
+    // คืนค่าสถานะห้องกลับเป็น "ว่าง"
+    await supabase.from('rooms').update({ status: 'ว่าง' }).eq('id', roomId)
+
+    revalidatePath('/booking')
+}
+
+
+
+
+// ==========================================
+// 3. EMPLOYEES and SALARIES ACTIONS 
+// ==========================================
+
+export async function updateEmployee(formData: FormData) {
+    const supabase = await createClient()
+    await supabase.from('employees').update({
+        name: formData.get('name'),
+        phone: formData.get('phone'),
+        type: formData.get('type'),
+        status: formData.get('status')
+    }).eq('id', Number(formData.get('id')))
+    revalidatePath('/manage-employees')
+}
+
+export async function updateSalary(formData: FormData) {
+    const supabase = await createClient()
+    await supabase.from('salaries').update({
+        emp_id: Number(formData.get('emp_id')),
+        base_salary: Number(formData.get('base_salary')),
+        extra_pay: Number(formData.get('extra_pay'))
+    }).eq('id', Number(formData.get('id')))
+    revalidatePath('/manage-employees')
+}
