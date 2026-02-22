@@ -48,7 +48,6 @@ export async function signup(formData: FormData) {
                     id: authData.user.id,
                     email: email,
                     name: name,
-                    hash_password: password, // หมายเหตุ: การเก็บรหัสผ่านจริงใน DB ไม่แนะนำใน Production
                     status: 'active',
                     role_id: 1,
                 },
