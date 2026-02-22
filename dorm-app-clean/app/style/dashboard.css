@@ -1,0 +1,12 @@
+/* คลุมทั้งหน้าจอด้วย Flexbox */
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* พื้นที่แสดงเนื้อหาหลัก */
+.main-content {
+    flex: 1;
+    /* ขยายเต็มพื้นที่ที่เหลือจาก Sidebar */
+    min-width: 0;
+}

@@ -1,4 +1,3 @@
-import { supabase } from "@/lib/supabaseClient";
 
 export default async function Home() {
 
@@ -10,7 +9,7 @@ export default async function Home() {
         <a href="/reset-password">Reset Password</a>
       </nav>
       <h1>Project Initialized 🚀</h1>
-      <p>Next.js + TypeScript + Supabase</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla sit nihil quis veritatis modi? Nam quaerat, totam error officia enim voluptatibus culpa provident recusandae magni cum ipsa itaque ad ea consectetur ratione cupiditate, maiores voluptatem commodi. Commodi nobis nihil voluptatibus quisquam accusamus et placeat, atque facere eius. Non, unde culpa.</p>
     </main>
   );
 }
