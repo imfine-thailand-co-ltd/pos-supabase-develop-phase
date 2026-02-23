@@ -269,8 +269,8 @@ export async function cancelBooking(formData: FormData) {
     // ลบประวัติการจองออก
     await supabase.from('room_tenants').delete().eq('id', roomTenantId)
 
-    // คืนค่าสถานะห้องกลับเป็น "ว่าง"
-    await supabase.from('rooms').update({ status: 'ว่าง' }).eq('id', roomId)
+    // คืนค่าสถานะห้องกลับเป็น "available"
+    await supabase.from('rooms').update({ status: 'available' }).eq('id', roomId)
 
     revalidatePath('/booking')
 }
