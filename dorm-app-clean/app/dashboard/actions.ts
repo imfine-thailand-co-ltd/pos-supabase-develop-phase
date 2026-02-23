@@ -251,9 +251,9 @@ export async function bookRoom(formData: FormData) {
     
     if (bookingError) throw new Error('Failed to book room: ' + bookingError.message)
 
-    // 3. อัปเดตสถานะห้องให้เป็น "ไม่ว่าง"
+    // 3. อัปเดตสถานะห้องให้เป็น "occupied"
     const { error: roomError } = await supabase.from('rooms').update({
-        status: 'ไม่ว่าง'
+        status: 'occupied'
     }).eq('id', roomId)
 
     if (roomError) throw new Error('Failed to update room status: ' + roomError.message)

@@ -10,7 +10,6 @@
     position: sticky;
     top: 0;
     
-    background: white;
     border-right: 1px solid #dbdbdb;
 
     overflow-y: auto;
@@ -24,7 +23,10 @@
     box-shadow: #32325d40 0px 2px 5px -1px, #0000004d 0px 1px 900px -1px;
 }
 
-/* .sidebar-header {} */
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+}
 
 /* .sidebar-title {} */
 
@@ -39,9 +41,6 @@
     gap: 0.75rem;
 
     width: 100%;
-    margin-bottom: 10px;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
     border: none;
     background: none;
 

@@ -1,0 +1,212 @@
+/* --- Layout หลัก --- */
+.room-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.room-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.room-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--foreground);
+    margin-bottom: 0.5rem;
+}
+
+/* --- ฟอร์มเพิ่มห้องพัก (Create Form) --- */
+.room-create-section {
+    background-color: var(--secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.room-section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--foreground);
+}
+
+.room-create-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    align-items: end;
+}
+
+/* --- Input & Select กลาง --- */
+.room-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.room-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--muted-foreground);
+}
+
+.room-input {
+    padding: 0.75rem 1rem;
+    background-color: var(--background);
+    color: var(--foreground);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.room-input:focus {
+    outline: none;
+    border-color: var(--ring);
+    box-shadow: 0 0 0 2px var(--ring);
+}
+
+/* --- ปุ่ม (Buttons) --- */
+.room-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.room-btn:active {
+    transform: scale(0.98);
+}
+
+.room-btn-primary {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+}
+
+.room-btn-primary:hover {
+    opacity: 0.9;
+}
+
+.room-btn-danger {
+    background-color: var(--destructive);
+    color: var(--destructive-foreground);
+    width: 100%;
+}
+
+.room-btn-danger:hover {
+    opacity: 0.9;
+}
+
+.room-btn-outline {
+    background-color: transparent;
+    color: var(--foreground);
+    border: 1px solid var(--border);
+    width: 100%;
+}
+
+.room-btn-outline:hover {
+    background-color: var(--accent);
+}
+
+/* --- การ์ดห้องพัก (Room Cards Grid) --- */
+.room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.room-card {
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.room-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    border-color: var(--ring);
+}
+
+/* --- ภาพพรีวิวห้อง --- */
+.room-preview {
+    height: 200px;
+    width: 100%;
+    position: relative;
+    background-color: var(--muted);
+}
+
+.room-preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.room-status-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: var(--success);
+    color: var(--success-foreground);
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 0.2);
+}
+
+/* --- เนื้อหาในการ์ดห้องพัก --- */
+.room-card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-grow: 1;
+}
+
+.room-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.room-card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--foreground);
+}
+
+.room-card-id {
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+    background-color: var(--muted);
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+}
+
+.room-update-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.room-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}

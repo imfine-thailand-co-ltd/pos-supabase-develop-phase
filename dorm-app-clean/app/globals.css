@@ -25,8 +25,88 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 } */
 
+:root {
+  /* 1. Base (พื้นหลังและตัวอักษรหลัก) */
+  --background: #ffffff;
+  --foreground: #0f172a;
+
+  /* 2. Primary (แบรนด์หลัก, ปุ่มตกลง, สีเน้นหลัก) */
+  --primary: #0f172a;
+  --primary-foreground: #f8fafc;
+
+  /* 3. Secondary (ปุ่มรอง, การ์ด, พื้นหลังส่วนเสริม) */
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+
+  /* 4. Muted (ข้อความสีจาง, placeholder, พื้นหลังแบบไม่เน้น) */
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+
+  /* 5. Accent (สีเวลา Hover หรือเลือกรายการ) */
+  --accent: #e2e8f0;
+  --accent-foreground: #0f172a;
+
+  /* 6. Semantic / Status (สถานะต่างๆ) */
+  --success: #22c55e;
+  --success-foreground: #ffffff;
+  --warning: #f59e0b;
+  --warning-foreground: #ffffff;
+  --destructive: #ef4444;
+  /* สีแดง (ลบ, error) */
+  --destructive-foreground: #ffffff;
+
+  /* 7. Borders & Inputs (เส้นขอบ, กล่องข้อความ) */
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #94a3b8;
+  /* สีขอบเวลาโฟกัส (Focus ring) */
+}
+
+[data-theme='dark'] {
+  /* 1. Base */
+  --background: #0f172a;
+  --foreground: #f8fafc;
+
+  /* 2. Primary (สลับให้สีหลักสว่าง ตัวอักษรเข้ม) */
+  --primary: #f8fafc;
+  --primary-foreground: #0f172a;
+
+  /* 3. Secondary */
+  --secondary: #1e293b;
+  --secondary-foreground: #f8fafc;
+
+  /* 4. Muted */
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+
+  /* 5. Accent */
+  --accent: #334155;
+  --accent-foreground: #f8fafc;
+
+  /* 6. Semantic / Status (ปรับให้เข้ากับจอคอมมืดๆ สบายตาขึ้น) */
+  --success: #22c55e;
+  --success-foreground: #0f172a;
+  --warning: #fbbf24;
+  --warning-foreground: #0f172a;
+  --destructive: #f87171;
+  /* แดงสว่างขึ้นนิดนึงให้อ่านง่าย */
+  --destructive-foreground: #0f172a;
+
+  /* 7. Borders & Inputs */
+  --border: #1e293b;
+  --input: #1e293b;
+  --ring: #475569;
+}
+
 body {
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
   margin: 0;
   padding: 0;
 }
 
+::selection {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}

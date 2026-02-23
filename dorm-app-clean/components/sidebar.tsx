@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import Link from 'next/link';
 import './sidebar.css'
+import ThemeToggle from './ThemeToggle';
 
 const menuItems = [
     {
@@ -65,9 +66,9 @@ export function Sidebar() {
                     <div className="sidebar-header">
                         {!collapsed && (
                             <>
-                                <h1 className="sidebar-title">
+                                <p className="sidebar-title">
                                     Dorm
-                                </h1>
+                                </p>
                             </>
                         )}
                         <button onClick={() => setCollapsed(!collapsed)}></button>
@@ -89,7 +90,11 @@ export function Sidebar() {
                                 </ul>
                             );
                         })}
+                        <ThemeToggle />
                     </nav>
+                </div>
+                <div>
+                    <p>footer</p>
                 </div>
             </aside>
         </>
