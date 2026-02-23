@@ -1,59 +1,179 @@
-/* Sidebar Styles */
-.sidebar {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    flex-shrink: 0;
-    /* ป้องกันไม่ให้ Sidebar โดนบีบจนหดเวลาจอเล็ก */
+/* sidebar.css */
+/* --- Container หลัก --- */
+.sidebar-container {
     height: 100vh;
     position: sticky;
     top: 0;
-    
-    border-right: 1px solid #dbdbdb;
-
-    overflow-y: auto;
-    /* ถ้าเมนูใน Sidebar เยอะเกินจอ ให้ Scroll เฉพาะใน Sidebar ได้ */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--background);
+    border-right: 1px solid var(--border);
+    width: 280px;
+    transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    /* สมูทขึ้นมาก */
+    z-index: 50;
     overflow-x: hidden;
-    transition: all 0.3s ease;
-    z-index: 1000;
 }
 
-.sidebar:hover {
-    box-shadow: #32325d40 0px 2px 5px -1px, #0000004d 0px 1px 900px -1px;
+/* เมื่อถูกพับ (Collapsed) */
+.sidebar-container.sidebar-collapsed {
+    width: 80px;
 }
 
+/* --- ส่วนหัว (Header) --- */
 .sidebar-header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    padding: 1.5rem;
+    height: 80px;
+    border-bottom: 1px solid transparent;
+    transition: padding 0.4s ease;
 }
 
-/* .sidebar-title {} */
-
-.nav-list {
-    list-style: none;
-    padding: 0;
+.sidebar-collapsed .sidebar-header {
+    justify-content: center;
+    padding: 1.5rem 0;
 }
 
-.nav-link {
+.sidebar-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--foreground);
+    margin: 0;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    background: linear-gradient(90deg, var(--foreground), var(--muted-foreground));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-collapsed .sidebar-title {
+    opacity: 0;
+    display: none;
+}
+
+/* ปุ่ม Toggle */
+.sidebar-toggle-btn {
+    background: transparent;
+    border: none;
+    color: var(--muted-foreground);
+    cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
 
+.sidebar-toggle-btn:hover {
+    background-color: var(--accent);
+    color: var(--foreground);
+}
+
+/* --- ส่วนเมนู (Navigation) --- */
+.sidebar-nav-container {
+    padding: 1.5rem 1rem;
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* ซ่อน Scrollbar แต่ยัง Scroll ได้ */
+.sidebar-nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar-nav-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.sidebar-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.sidebar-nav-item {
     width: 100%;
-    border: none;
-    background: none;
+}
 
-    color: black;
+.sidebar-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    color: var(--muted-foreground);
     text-decoration: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    overflow: hidden;
 }
 
-.nav-link:hover {
-    transform: translateX(10px) scale(1.1);
+/* การจัดไอคอนให้อยู่ตรงกลางเวลาพับ */
+.sidebar-collapsed .sidebar-nav-link {
+    justify-content: center;
+    padding: 0.75rem 0;
 }
 
-.nav-link.active {
-    box-shadow: #d4d4d4 3px 2px 3px 2px inset;
+/* Hover Effect */
+.sidebar-nav-link:hover {
+    background-color: var(--accent);
+    color: var(--foreground);
+    transform: translateX(4px);
+    /* เลื่อนขวาเบาๆ เวลาเอาเมาส์ชี้ */
+}
+
+.sidebar-collapsed .sidebar-nav-link:hover {
+    transform: translateY(-2px);
+    /* เวลาพับ ให้เลื่อนขึ้นเบาๆ แทน */
+}
+
+/* Active State (หรูหรา) */
+.sidebar-nav-link.sidebar-active {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+}
+
+.sidebar-nav-link.sidebar-active:hover {
+    transform: none;
+    /* ปิด Effect เลื่อนเวลา Active อยู่แล้ว */
+}
+
+/* ข้อความเมนู */
+.sidebar-nav-text {
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar-collapsed .sidebar-nav-text {
+    opacity: 0;
+    transform: translateX(-10px);
+    position: absolute;
+    pointer-events: none;
+}
+
+/* --- ส่วนท้าย (Footer) --- */
+.sidebar-footer {
+    padding: 1.5rem 1rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    transition: padding 0.4s ease;
 }
