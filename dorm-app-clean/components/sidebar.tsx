@@ -67,7 +67,7 @@ export function Sidebar() {
                         {!collapsed && (
                             <>
                                 <p className="sidebar-title">
-                                    Dorm
+                                    Dorm system
                                 </p>
                             </>
                         )}
