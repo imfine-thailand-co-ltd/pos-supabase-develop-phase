@@ -27,75 +27,75 @@ body {
 
 :root {
   /* 1. Base (พื้นหลังและตัวอักษรหลัก) */
-  --background: #ffffff;
-  --foreground: #0f172a;
+  --background: #F8F4EC;
+  --foreground: #2C2C2C;
 
   /* 2. Primary (แบรนด์หลัก, ปุ่มตกลง, สีเน้นหลัก) */
-  --primary: #0f172a;
-  --primary-foreground: #f8fafc;
+  --primary: #C6A75E;
+  --primary-foreground: #FFFFFF;
 
   /* 3. Secondary (ปุ่มรอง, การ์ด, พื้นหลังส่วนเสริม) */
-  --secondary: #f1f5f9;
-  --secondary-foreground: #0f172a;
+  --secondary: #F3EBDD;
+  --secondary-foreground: #2C2C2C;
 
   /* 4. Muted (ข้อความสีจาง, placeholder, พื้นหลังแบบไม่เน้น) */
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
+  --muted: #EFE6D6;
+  --muted-foreground: #8C7A5B;
 
   /* 5. Accent (สีเวลา Hover หรือเลือกรายการ) */
-  --accent: #e2e8f0;
-  --accent-foreground: #0f172a;
+  --accent: #B8913F;
+  --accent-foreground: #FFFFFF;
 
   /* 6. Semantic / Status (สถานะต่างๆ) */
-  --success: #22c55e;
-  --success-foreground: #ffffff;
-  --warning: #f59e0b;
-  --warning-foreground: #ffffff;
-  --destructive: #ef4444;
+  --success: #3FA37C;
+  --success-foreground: #FFFFFF;
+  --warning: #D4A017;
+  --warning-foreground: #FFFFFF;
+  --destructive: #C94C4C;
   /* สีแดง (ลบ, error) */
-  --destructive-foreground: #ffffff;
+  --destructive-foreground: #FFFFFF;
 
   /* 7. Borders & Inputs (เส้นขอบ, กล่องข้อความ) */
-  --border: #e2e8f0;
-  --input: #e2e8f0;
-  --ring: #94a3b8;
+  --border: #E6D9C3;
+  --input: #E6D9C3;
+  --ring: #C6A75E;
   /* สีขอบเวลาโฟกัส (Focus ring) */
 }
 
 [data-theme='dark'] {
   /* 1. Base */
-  --background: #0f172a;
-  --foreground: #f8fafc;
+  --background: #0C0C0E;
+  --foreground: #EDEDED;
 
   /* 2. Primary (สลับให้สีหลักสว่าง ตัวอักษรเข้ม) */
-  --primary: #f8fafc;
-  --primary-foreground: #0f172a;
+  --primary: #C6A75E;
+  --primary-foreground: #0C0C0E;
 
   /* 3. Secondary */
-  --secondary: #1e293b;
-  --secondary-foreground: #f8fafc;
+  --secondary: #1A1A1F;
+  --secondary-foreground: #EDEDED;
 
   /* 4. Muted */
-  --muted: #1e293b;
-  --muted-foreground: #94a3b8;
+  --muted: #2A2A31;
+  --muted-foreground: #AFAFAF;
 
   /* 5. Accent */
-  --accent: #334155;
-  --accent-foreground: #f8fafc;
+  --accent: #B8913F;
+  --accent-foreground: #FFFFFF;
 
   /* 6. Semantic / Status (ปรับให้เข้ากับจอคอมมืดๆ สบายตาขึ้น) */
-  --success: #22c55e;
-  --success-foreground: #0f172a;
-  --warning: #fbbf24;
-  --warning-foreground: #0f172a;
-  --destructive: #f87171;
+  --success: #3FA37C;
+  --success-foreground: #0C0C0E;
+  --warning: #D4A017;
+  --warning-foreground: #0C0C0E;
+  --destructive: #E06666;
   /* แดงสว่างขึ้นนิดนึงให้อ่านง่าย */
-  --destructive-foreground: #0f172a;
+  --destructive-foreground: #0C0C0E;
 
   /* 7. Borders & Inputs */
-  --border: #1e293b;
-  --input: #1e293b;
-  --ring: #475569;
+  --border: #2A2A31;
+  --input: #2A2A31;
+  --ring: #C6A75E;
 }
 
 body {
