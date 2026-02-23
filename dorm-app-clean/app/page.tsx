@@ -3,6 +3,7 @@ export default async function Home() {
 
   return (
     <main style={{ padding: '2rem' }}>
+      <p style={{ position: 'fixed', bottom: '10px', right: '10px', margin: '0' }}>DEMO VERSION 0.0.1</p>
       <nav style={{ display: 'flex', gap: '1rem' }}>
         <a href="/login">Login</a>
         <a href="/signup">Sign Up</a>
