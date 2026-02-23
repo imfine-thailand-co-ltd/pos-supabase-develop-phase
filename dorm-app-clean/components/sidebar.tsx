@@ -3,7 +3,7 @@
 import {
     LayoutDashboard, Building2, Users, UserCog,
     Wrench, DollarSign, CalendarCheck, LogIn, LogOut,
-    PanelLeftClose, PanelLeftOpen // เพิ่ม Icon สำหรับปุ่มเปิด/ปิด
+    PanelLeftClose, PanelLeftOpen
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
@@ -67,10 +67,7 @@ export function Sidebar() {
                 </ul>
             </nav>
 
-            {/* ส่วนล่างสุด: สลับธีม หรือ โปรไฟล์ */}
             <div className="sidebar-footer">
-                {/* ถ้าอยากให้ ThemeToggle หดตาม Sidebar ได้ อาจจะต้องไปปรับแต่งตัว Component ThemeToggle นิดหน่อย */}
-                {/* แต่ผมวางโครงให้มันอยู่ตรงกลางสวยๆ ไว้ให้แล้วครับ */}
                 <ThemeToggle />
             </div>
 

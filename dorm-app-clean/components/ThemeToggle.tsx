@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { MoonStar, Sun } from 'lucide-react';
 
 export default function ThemeToggle() {
     const [theme, setTheme] = useState('light');
@@ -35,7 +36,7 @@ export default function ThemeToggle() {
                 cursor: 'pointer',
             }}
         >
-            {theme === 'light' ? '🌙' : '☀️'}
+            {theme === 'light' ? <MoonStar /> : <Sun />}
         </button>
     );
 }

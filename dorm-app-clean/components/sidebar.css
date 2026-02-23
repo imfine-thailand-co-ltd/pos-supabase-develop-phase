@@ -11,9 +11,13 @@
     border-right: 1px solid var(--border);
     width: 280px;
     transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    /* สมูทขึ้นมาก */
     z-index: 50;
     overflow-x: hidden;
+    transition: all 0.3s ease;
+}
+
+.sidebar-container:hover {
+    box-shadow: 10px 10px 200px 50px var(--border);
 }
 
 /* เมื่อถูกพับ (Collapsed) */
